@@ -1,4 +1,4 @@
-# Copyright [yyyy] [name of copyright owner]
+# Copyright [yyyy] [Sean Borneman]
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -14,7 +14,7 @@
 
 """
 Things to do:
- - Please name this file <demo_name>.py
+ - Please name this file <RunQUBO>.py
  - Fill in [yyyy] and [name of copyright owner] in the copyright (top line)
  - Add demo code below
  - Format code so that it conforms with PEP 8
