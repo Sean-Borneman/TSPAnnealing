@@ -11,7 +11,7 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-
+token = "DEV-3c6b5f9f6d007b01f6bb97baaf7ac8fa7d98c03f"
 """
 Things to do:
  - Please name this file <RunQUBO>.py
@@ -22,28 +22,66 @@ Things to do:
 
 import dimod
 from dwave.system.samplers import DWaveSampler
-from dwave.system.composites import EmbeddingComposite
-
-linear = {1: -23, 2: -45, 3: -42, 4: -36, 5: -23, 6: -44, 7:-42, 8:-44, 9:-23}
+# from dwave.system.composites import EmbeddingComposite
+# import dwave.inspector 
+import dwave
+linear = {1:-3, 2:-4, 3:-4, 4:-5, 5:-4,6:-3,7:-4,8:-4,9:-5,10:-4}
 quadratic = {
-    (1, 2): 46, (1, 3): 46, (1, 4): 46, (1, 7): 46,
-    (2, 3): 46, (2, 5): 46, (2, 8): 46,
-    (3, 6): 46, (3, 9): 46,
-    (4, 5): 46, (4, 6): 46, (4, 7): 46, 
-    (5, 6): 46, (5, 8):46,
-    (6, 9): 46,
-    (7, 8): 46, (7, 9): 46,
-    (8, 9): 46
-    }
+    (1,6):10,
+    (2,7):10,
+    (3,8):10,
+    (4,9):10,
+    (5,10):10
+}
+# linear = {1:-82, 2:-162, 3:-159, 4:-158, 5:-160, 6:-162, 7:-82, 8:-161, 9:-162, 10:-161, 11:-160, 12:-160, 13: -86, 14: -163, 15: -157, 16: -159, 17: -162, 18: -160, 19: -82, 20: -153, 21: 160, 22: -161, 23:-157, 24: -161, 25:-82}
+# quadratic = {
+#     (1, 2) : 164, (1,3): 164, (1,4):164, (1,5):164, (1,6):164, (1,11):164, (1, 16):164, (1, 21): 164,
+#     (2, 3):164, (2,4):164, (2,5):164, (2,6): 164, (2, 7): 164, (2,12):164, (2,17):164, (2,22):164,
+#     (3, 4): 164 ,(3,5):164, (3, 8): 164, (3,11):164, (3,13):164, (3, 18):164, (3, 23):164,
+#     (4, 5): 164, (4, 9):164, (4, 14): 164, (4,16):164, (4, 19): 164, (4, 24):164,
+#     (5, 10): 164, (5, 15): 164, (5, 20): 1254, (5,21):164, (5, 25): 164,
+#     (6, 7): 164, (6, 8):164, (6, 9):164, (6, 10):164, (6, 11):164, (6, 16):164, (6, 21):164,
+#     (7, 8):164, (7,9):164, (7,10):164, (7, 12):164, (7,17):164, (7, 22):164, 
+#     (8, 9): 164, (8,10):164, (8,12):164, (8,13):164, (8,18):164,(8,23):164,
+#     (9, 10): 164, (9 ,14): 164, (9,17):164, (9, 19):164, (9, 24):164, #9, 19 was 20
+#     (10, 15):164, (10, 20):164, (10, 22):164, (10, 25):164, 
+#     (11, 12):164, (11, 13):164, (11, 14):164, (11, 15):164, (11, 16):164, (11, 21):164,
+#     (12, 13):164, (12, 14):164, (12, 15):164, (12, 17):164, (12, 22):164,
+#     (13, 14):164, (13, 15):164, (13, 18):164, (13, 23):164,
+#     (14, 15):164, (14, 18):164, (14, 19):164,(14, 24):164,
+#     (15, 20):164 , (15, 23):164, (15, 25):164,
+#     (16, 17):164, (16, 18):164, (16, 19):164, (16, 20):164, (16, 21):164,
+#     (17, 18):164, (17, 19):164, (17, 20):164, (17, 22):164,
+#     (18, 19):164, (18, 20):164, (18, 23):164,
+#     (19, 20):164, (19, 24):164,
+#     (20, 25):164, (20,24):164,
+#     (21, 22):164, (21, 23):164, (21, 24):164, (21, 25):164,
+#     (22, 23):164, (22, 24):164, (22, 25):164,
+#     (23, 24):164, (23, 25):164,
+#     (24, 25):164
+# }
+# linear = {1: -23, 2: -44, 3: -44, 4: -41, 5: -23, 6: -43, 7:-36, 8:-45, 9:-23}
+# quadratic = {
+#     (1, 2): 46, (1, 3): 46, (1, 4): 46, (1, 7): 46,
+#     (2, 3): 46, (2, 5): 46, (2, 8): 46,
+#     (3, 6): 46, (3, 9): 46,
+#     (4, 5): 46, (4, 6): 46, (4, 7): 46, 
+#     (5, 6): 46, (5, 8):46,
+#     (6, 9): 46,
+#     (7, 8): 46, (7, 9): 46,
+#     (8, 9): 46
+# #     }
 offset = 0.0
 vartype = dimod.BINARY
-
+print(linear)
+print("--------------")
+print(quadratic)
 bqm = dimod.BinaryQuadraticModel(linear, quadratic, offset, vartype)
-sampler = dimod.ExactSolver()
-sample_set = sampler.sample(bqm)
-print("Using ExactSolver()")
-print(sample_set)
-print("using ExactSolver()")
+# sampler = dimod.ExactSolver()
+# sample_set = sampler.sample(bqm)
+# print("Using ExactSolver()")
+# print(sample_set)
+# print("using ExactSolver()")
 #      1  2  3  4  5  6  7  8  9 energy num_oc.
 # 227  0  1  0  0  0  1  1  0  0 -131.0       1
 # 119  0  0  1  1  0  0  0  1  0 -122.0       1
@@ -133,12 +171,14 @@ print("using ExactSolver()")
 # 258  1  1  0  0  0  1  0  0  1  -43.0       1
 # 7    0  0  1  0  0  0  0  0  0  -42.0       1
 
-print("#" * 80)
+#print("#" * 80)
 
 sampler = dimod.SimulatedAnnealingSampler()
-sample_set = sampler.sample(bqm)
+sample_set = sampler.sample(bqm, num_reads = 100)
 print("Using SimulatedAnnlearingSampler()")
 print(sample_set)
+for i in sample_set:
+   print(i)
 # Using SimulatedAnnlearingSampler()
 #    1  2  3  4  5  6  7  8  9 energy num_oc.
 # 4  0  1  0  0  0  1  1  0  0 -131.0       1
@@ -153,9 +193,19 @@ print(sample_set)
 # 1  1  0  0  0  1  0  0  0  1  -69.0       1
 # ['BINARY', 10 rows, 10 samples, 9 variables]
 
-print("#" * 80)
+# print("#" * 80)
 
-sampler = EmbeddingComposite(DWaveSampler())
-sample_set = sampler.sample(bqm)
-print("Using DWaveSampler()")
-print(sample_set)
+# sampler = dwave.systems.composites.EmbeddingComposite(DWaveSampler(token = token))
+# sample_set = sampler.sample(bqm, num_reads = 100)
+# print("Using DWaveSampler()")
+# print(sample_set)
+# for i in sample_set:
+#     print(i)
+
+# embedding = sample_set.info['embedding_context']['embedding']
+
+# print(f"Number of logical variables: {len(embedding.keys())}")
+# print(f"Number of physical qubits used in embedding: {sum(len(chain) for chain in embedding.values())}")
+
+print("done!")
+print(bqm.variables )
