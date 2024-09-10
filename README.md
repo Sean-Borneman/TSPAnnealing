@@ -7,15 +7,9 @@ The algorithm solves the Traveling Salesman Problem which is inputted as a matri
 
 The project was my submission for ISEF 23' and an improved version was submitted to JSHS 24'
 # Traveling Salesman Problem
+The Taveling Salesman Problem asks" Given a list of cities and the distances between each pair of cities, what is the shortest possible route that visits each city exactly once and returns to the origin city?" and is a classic example of an NP hard problem.
 
-Describe your example and specify what it is demonstrating. Consider the
-following questions:
 
-* Is it pedagogical or a usable application?
-* Does it belong to a particular domain such as material simulation or logistics? 
-* What level of Ocean proficiency does it target (beginner, advanced, pro)? 
-
-A clear description allows us to properly categorize your example.
 
 Images are encouraged. If your example produces a visualization, consider
 displaying it here.
