@@ -1,13 +1,12 @@
-**Interested in contributing a code example?** 
-
-Please take a look at our [contribution guidelines](CONTRIBUTING.md) before
-getting started. Thanks!
-
 <!-- Before submitting your code, please delete the above code contribution
 instructions and this comment as they will not be relevant in your code 
 example README.md.-->
+# About
+This project was used to interface my Quantum Annealing Algorithm with the DWave API
+The algorithm solves the Traveling Salesman Problem which is inputted as a matrix to the algorithm 
 
-# <demo_name>
+The project was my submission for ISEF 23' and an improved version was submitted to JSHS 24'
+# Traveling Salesman Problem
 
 Describe your example and specify what it is demonstrating. Consider the
 following questions:
