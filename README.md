@@ -7,52 +7,36 @@ The algorithm solves the Traveling Salesman Problem which is inputted as a matri
 
 The project was my submission for ISEF 23' and an improved version was submitted to JSHS 24'
 # Traveling Salesman Problem
-The Taveling Salesman Problem asks" Given a list of cities and the distances between each pair of cities, what is the shortest possible route that visits each city exactly once and returns to the origin city?" and is a classic example of an NP hard problem.
+The Taveling Salesman Problem asks" Given a list of cities and the distances between each pair of cities, what is the shortest possible route that visits each city exactly once and returns to the origin city?" and is a classic example of an NP hard problem. Below you can see an example
+![ExampleSetup](FiveCity1Path.png)
+The problem can then be encoded in a matrix
+![MatrixEncoding](5CityMatrix.png)
 
-
-
-Images are encouraged. If your example produces a visualization, consider
-displaying it here.
-
-![D-Wave Logo](dwave_logo.png)
+##Algorithm
 
 ## Usage
 
-A simple command that runs your program. For example,
-
+Use
 ```bash
-python <demo_name>.py
+python RunQUBO.py
 ```
-
-If your example requires user input, make sure to specify any input limitations.
-
+to run a basic QUBO example on the DWave API. THe output can then be seen either on the DWave Dashboard or you can view it locally with 
+```python
+dwave.inspector.show(sample_set)
+```
 ## Code Overview
 
-A general overview of how the code works.
+There are a few scripts in the project
 
-We prefer descriptions in bite-sized bullet points:
-
-* Here's an example bullet point
-
-## Code Specifics
-
-Notable parts of the code implementation.
-
-This is the place to:
-
-* Highlight a part of the code implementation
-* Talk about unusual or potentially difficult parts of the code
-* Explain a code decision
-* Explain how parameters were tuned
-
-Note: there is no need to repeat everything that is already well-documented in
-the code.
+* [RunQUBO.py](RunQUBO.py) serves as the main script in the project, it takes the QUBO coeffiecents either genreate by another script or manually hardcoded and runs them on the API
+* [DynamicGen.py](DynamicGen.py) will genreate the QUOB equation using the penalty functions for the algorithm
 
 ## References
 
-A. Person, "Title of Amazing Information", [short link
-name](https://example.com/)
+A. Mahasinghe, A., Hua, R., Dinneen, M. J., & Goyal, R. (2019). Solving the hamiltonian cycle problem using a
+quantum computer. Proceedings of the Australasian Computer Science Week Multiconference, 1–9.
 
+![D-Wave Logo](dwave_logo.png)
 ## License
 
 Released under the Apache License 2.0. See [LICENSE](LICENSE) file.
